@@ -103,8 +103,9 @@ string = (a + '') + (b + '');
 
 //task 5
 //----1----
-Math.PI.toFixed(2);
-//"3.14"
+Math.round(Math.PI * 100) / 100;
+//3.14
+
 
 
 //----2----
