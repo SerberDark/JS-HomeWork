@@ -116,16 +116,18 @@ Math.min(15, 11, 16, 12, 51, 12, 13, 51)
 
 
 //----3----
-Math.random().toFixed(2)
-//"0.26"
+Math.round(Math.random() * 100) / 100;
+//0.61
 
 //----4----
-Math.random().toFixed(2) * 100
-//31
+Math.round(Math.random(100) * 100);
+//77
 
 
 //----5----
 Math.ceil((0.6 + 0.7)*10)/10;
+//1.3
+Math.round((0.6 + 0.7)*10)/10;
 //1.3
 
 
