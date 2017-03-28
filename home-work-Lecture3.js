@@ -59,19 +59,34 @@ console.log(string);
 //"Some test strinG"
 
 
+//------------------------------------------------------------------------------------------------
+let string = 'some test string';
+string = string[0].toUpperCase() + string.slice(1,string.length-1) + string[string.length-1].toUpperCase()
+//"Some test strinG"
+
+
+
+
+
+
+
+
 //----3----
 var string = 'some test string';
 string.indexOf('string')
 //10
 
-
+//----------------------ПОСИСК В СТРОКЕ
 //----4----
 var string = 'some test string';
 string.indexOf(' ')
 //4
-var string = 'some test string';
-string.indexOf(' ', [5]);
-//9
+let str = 'some test string',
+ firstSpace = str.indexOf(' '),
+ secondSpace = str.indexOf(' ', firstSpace+1);
+str.indexOf(' ', secondSpace);
+//11
+
 
 
 //----5----
@@ -97,6 +112,8 @@ string2 = string.slice(0, [10]);
 //----8----
 var a = 20, b = 16;
 string = (a + '') + (b + '');
+
+string = '' + a + b;
 //"2016"
 
 
@@ -120,7 +137,7 @@ Math.round(Math.random() * 100) / 100;
 //0.61
 
 //----4----
-Math.round(Math.random(100) * 100);
+Math.round(Math.random() * 100);
 //77
 
 
@@ -145,11 +162,11 @@ console.log(obj);
 
 
 //----2----
-obj.price = '1000';
+obj[price] = '1000';
 //Object {product: "iphone", price: "1000"}
 
 //----3----
-obj.details = {model: '7', color: 'green'}
+obj[details] = {model: '7', color: 'green'};
 //Objectdetails: Objectcolor: "green"model: "7"__proto__: Objectprice: "1000"product: "iphone"__proto__: Object
 
 //-----------------------Lecture-3------------HOME-WORK-------------------------------
