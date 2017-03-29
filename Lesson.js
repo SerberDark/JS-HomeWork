@@ -406,12 +406,203 @@
 
 //----------------------------------------------ФИЛЬТР-----------------------------------
 
-var arr = [1,1,3,54,323,1,2,7,9,4,3];
+// var arr = [1,1,3,54,323,1,2,7,9,4,3];
+//
+// function sortUnicVal(curentValue, index, arr) {
+// 	if (index == arr.indexOf(curentValue) ) return curentValue;
+//
+// }
+//
+// var newArr = arr.filter(sortUnicVal);
 
-function sortUnicVal(curentValue, index, arr) {
-	if (index == arr.indexOf(curentValue) ) return curentValue;
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////////////////////////
+// Передача переменных //
+function foo(x = 11, y, z) {
+	x = x !== undefined ? x : 11;
+	return x + y + z;
 }
 
-var newArr = arr.filter(sortUnicVal);
+var res = foo(1, 2, 3);
+
+console.log(res);
+
+
+
+
+////////////////////////////////////// THIS ////////////////////////
+// МЕТОДЫ
+
+var obj = {
+	  name: 'Denis',
+	  age: 28,
+	  getAge: function () {
+				return obj.age;
+	 },
+	changeAge: function (age) {
+			obj.age = age;
+	}
+};
+console.log(obj.getAge());
+
+////  через this   /////////////////
+
+function getAge() {
+	return this.age;
+}
+function changeAge(age) {
+	this.age = age;
+	return this;
+}
+
+var obj = {
+		name: 'Denis',
+		age: 28,
+		getAge: getAge,
+		changeAge: changeAge
+};
+
+var user2 = {
+		name: 'Ivan',
+		age: 30,
+		getAge: getAge,
+		changeAge: changeAge
+	};
+user2.getAge = obj.getAge();
+
+
+
+
+
+///////////////////////Принудительный контекст вызова CALL
+
+var name = prompt('Введите название', 'intel celeron x2 4576/113');
+var discount = prompt('Введите скидку', '0');
+
+var item = {
+		itemName: 'intel celeron x2 4576/113',
+		price: '2000грн'
+};
+
+function getName() {
+	return this.itemName;
+}
+
+function changeName(name) {
+	this.itemName = name;
+	return this;
+}
+
+function getPriceWithDiscount(discount) {
+	return parseFloat(this.price) * (100 - discount) / 100;
+}
+
+var resName = getName.call(item);
+var resChangeName = changeName.call(item, name);
+var resGetPriceWithDiscount = getPriceWithDiscount.call(item, discount);
+
+console.log(item, resGetPriceWithDiscount);
+
+
+
+///////////////////////Принудительный контекст вызова APPLY
+
+// var name = prompt('Введите название', 'intel celeron x2 4576/113');
+// var discount = prompt('Введите скидку', '0');
+
+var item = {
+	itemName: 'intel celeron x2 4576/113',
+	price: '2000грн'
+};
+
+function getName() {
+	return this.itemName;
+}
+
+function changeName(name) {
+	this.itemName = name;
+	return this;
+}
+
+function getPriceWithDiscount(discount, currency) {
+	return currency + (parseFloat(this.price) * (100 - discount) / 100);
+}
+
+var resName = getName.apply(item);
+//var resChangeName = changeName.apply(item, name);
+var resGetPriceWithDiscount = getPriceWithDiscount.apply(item, [10, '$']);
+
+console.log(item, resGetPriceWithDiscount);
+
+
+/////////////////////////////////////////
+function foo(x, y, z) {
+	return x + y + z;
+}
+
+var res = foo.apply(null, [1, 2, 3]);
+
+console.log(res);
+/////////////////////////////////////////
+
+Math.max.apply(null, [2,4,5])
+
+/////////////////////////////////////////
+
+function foo(x, y, z) {
+	var list = [].slice.call(arguments);
+		console.log(list)
+}
+
+	var res = foo(1, 2, 3);
+
+/////////////////////////////////////////// Сохранить this через Self
+
+var res = foo(1,2,3);
+
+function Some() {
+	var self = this;
+	this.someVar = 'fsdsds';
+
+	$(el).on('click', function () {
+		self.someVar
+	})
+}
+
+/////////////////////////////////////////////// Bind  Обработка сложных данных Закрепление мвязи с объектом
+
+var user = {
+	uName: 'Denis',
+	getName: function () {
+		return this.uName;
+	}
+};
+
+var getName = user.getName.bind(user);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
