@@ -21,7 +21,7 @@ for (let i = 0; i < str.length; i++) {
 var str = 'tseb eht ma i',
 		result = '';
 
-for (let i = 0; i = str.length ; i--) {
+for (let i = 0; i = str.length; i--) {
 		result += str[i];
 }
 //"i am the best"
@@ -65,7 +65,7 @@ for (let i = 1; i < length; i++) {
 
 //задача---6-------------------------------------Нечетные вывести
 
-for (var i = 0; i <= 15; i++) {
+for (let i = 0; i <= 15; i++) {
 	if (i % 2 === 0) {
 		continue;
 	}
@@ -79,4 +79,3 @@ for (var i = 0; i <= 15; i++) {
 //11
 //13
 //15
-

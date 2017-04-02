@@ -1,18 +1,59 @@
 //-----------------------------------Lecture 6--------------------------------------------------------
-//-----------слайд 35
 
-//задача---1------------------------------------
+
+//задача---1-------------------------------возвращает произведение чисел
 function multiply() {
 	if (arguments.length === 0) return 0;
 	var res = 1;
 	for (i = 0, max = arguments.length; i < max; i++) {
 		res *= arguments[i];
 	}
+	return res
 }
-multiply(2,3,4,5,6,7,8);
+multiply(1, 2, 3);
+//6
+
+//задача---2-----------------------Факториал числа
+function factorial(limit) {
+	var n;
+	if (limit > 1) {
+		n = limit * factorial(--limit);
+	} else {
+		n = limit;
+	}
+	return n
+}
+factorial(10);
+//3628800----------
 
 
+//задача---3-----------------------Функция возвращает развернутую строку
+function reverseStr() {
+	if (arguments.length === 0) return 'no string';
+	var resultStr = '';
+	for (i = 0, max = arguments.length; i < max; i++) {
+		resultStr  += arguments[i];
+	}
+	return resultStr.split("").reverse().join("");
+}
+reverseStr('test');
+//"tset"
+reverseStr('test 2');
+//"2 tset"
 
+
+//задача---4---------------------------??????????? запинается на первом символе ????
+
+function unicodeStr() {
+	if (arguments.length === 0) return 'no string';
+	var resultStr = '';
+	for (i = 0, max = arguments.length; i < max; i++) {
+		resultStr  += arguments[i].charCodeAt(0) + ' ' + arguments[i].charCodeAt(1) + ' ' + arguments[i].charCodeAt(2) + ' ' + arguments[i].charCodeAt(3) + ' ' + + arguments[i].charCodeAt(4)
+	}
+	return resultStr;
+}
+unicodeStr('hello');
+//"104 "
 
 
 //задача---5------------------------------------
@@ -29,6 +70,7 @@ printChars('test');
 //e
 //s
 //t
+
 
 //задача---6------------------------------------
 
