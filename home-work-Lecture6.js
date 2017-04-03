@@ -48,12 +48,12 @@ function unicodeStr() {
 	if (arguments.length === 0) return 'no string';
 	var resultStr = '';
 	for (i = 0, max = arguments.length; i < max; i++) {
-		resultStr  += arguments[i].charCodeAt(0) + ' ' + arguments[i].charCodeAt(1) + ' ' + arguments[i].charCodeAt(2) + ' ' + arguments[i].charCodeAt(3) + ' ' + + arguments[i].charCodeAt(4)
+		resultStr  += arguments[i].charCodeAt(0) + ' ' + arguments[i].charCodeAt(1) + ' ' + arguments[i].charCodeAt(2) + ' ' + arguments[i].charCodeAt(3) + ' ' + arguments[i].charCodeAt(4)
 	}
 	return resultStr;
 }
 unicodeStr('hello');
-//"104 "
+//"104 101 108 108 111"
 
 
 //задача---5------------------------------------
@@ -111,18 +111,3 @@ firstFunc([1, 2, 3], function (value) {
 	return value + 5 + ', ';
 });
 //"New value: 6, 7, 8, "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
