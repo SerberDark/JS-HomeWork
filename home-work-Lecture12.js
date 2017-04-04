@@ -51,9 +51,7 @@ function getUserName() {
 user.getUserName();
 //'Serhii'
 
-user.getName = function () {
-	return this.name
-};
+user.getName = getUserName;
 
 user.getName();
 //"Serhii"
@@ -81,19 +79,25 @@ figure.height;
 
 var numerator = {
 	value: 1,
-	double: function double() {
-		this.value += this.value;
-		return this
-	},
-	plusOne: function plusOne() {
-		this.value++;
-		return this
-	},
-	minusOne: function minusOne() {
-		this.value--;
-		return this
-	}
+	double: double,
+	plusOne: plusOne,
+	minusOne: minusOne
 };
+
+function double() {
+	this.value += this.value;
+	return this
+}
+
+function plusOne() {
+	this.value++;
+	return this
+}
+
+function minusOne() {
+	this.value--;
+	return this
+}
 
 numerator.double().plusOne().plusOne().minusOne();
 
@@ -121,4 +125,144 @@ user.getName(); // 'Serhii' теперь можно получить имя ис
 
 otherUser.getName();
 // 'John' Метод вызывает ключ name в обьекте otherUser
+
+
+
+// slide 36
+
+//-1-----
+
+function getList() {
+	return this.list
+}
+var users = {
+	length: 4,
+	list: ['Abraham', 'James', 'John', 'Serhii']
+};
+
+getList(); // Функция вызывается глобально для нее this is window (Потеря контекста)
+// undefined
+
+users.getList = getList;  // Одалживаем объекту метод getList
+//function getList() {
+//	return this.list
+//}
+
+users.getList(); // Теперь есть возможность использовать полученный метод getList
+//["Abraham", "James", "John", "Serhii"]
+
+getList.call(users);  // Подменяем контекст вызова функции методом call(нужный нам контекст)
+// ["Abraham", "James", "John", "Serhii"]
+
+
+//-2-----Метод общей стоимости
+
+var obj = {
+	retailPrice: '100$',
+	quantityDetails: 1000,
+	totalCost: totalCost
+};
+
+function totalCost() {
+		return parseFloat(this.retailPrice) * this.quantityDetails
+}
+
+obj.totalCost();
+//10000
+
+
+//-3------Метод изменения контекста через call
+
+var obj = {
+	retailPrice: '100$',
+	quantityDetails: 1000,
+	totalCosts: totalCosts
+},
+	otherObj = {
+		quantityDetails: 50,
+		retailPrice: '5$',
+	};
+
+function totalCosts() {
+	return parseFloat(this.retailPrice) * this.quantityDetails
+}
+
+totalCosts.call(otherObj);
+// 250
+
+
+//-4------Использование метода не изменяя объект
+
+var size = {
+	width: 5,
+	height: 10
+};
+	getSquare = function () {
+		return this.width * this.height
+	};
+
+getSquare.call(size); // получение результата через call
+// 50
+
+getSquare = getSquare.bind(size); // связываем метод и объект
+
+getSquare(); // через Bind
+//50
+
+
+//-5-----Использование Apply
+
+var numbers = [
+	4, 12, 0, 10, -2, 4
+];
+
+Math.min.apply(null, numbers);
+//-2
+
+
+//-6----------Заимствование метода другим объектом через call
+
+var elements = {
+	height: '15px',
+	marginTop: '5px',
+	marginBottom: '5px',
+	getFullHeight: function () {
+		return parseFloat(this.height) + parseFloat(this.marginTop) + parseFloat(this.marginBottom)
+	}
+};
+	block = {
+		height: '5px',
+		marginTop: '3px',
+		marginBottom: '3px'
+	};
+
+elements.getFullHeight.call(block);
+// 11
+
+
+//-7----------Связываем контекст вызова с функцией при помощи метода Bind
+
+var element = {
+	height: 25,
+	getHeight: function () {
+		return this.height
+	}
+};
+
+var getElementHeight = element.getHeight.bind(element); //
+
+getElementHeight();
+// 25
+
+
+
+
+
+
+
+
+
+
+
+
 
