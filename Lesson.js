@@ -306,36 +306,36 @@
 // var arr = [1,2,15,8,10,3,2];
 
 
-// Сортировка массива
-// var arr = [
-// 	{
-// 		name: 'Denis',
-// 		age: '28'
-// 	},
-// 	{
-// 		name: 'Kolj',
-// 		age: '30'
-// 	},
-// 	{
-// 		name: 'Serg',
-// 		age: '25'
-// 	},
-// 	{
-// 		name: 'Max',
-// 		age: '17'
-// 	}
-// ]
-//
-// function sortArr(prev, next) {
-// 	console.log(`1: ${prev}, 2: ${next}`);
-// 	 return prev['age'] - next['age'];
-//
-// 	 //if(prev['name'] < next['name']) return -1;   // сортировка по имени
-// 	 //if(prev['name'] > next['name']) return 1;   //сортировка по имени
-//
-// }
-// var newArr = arr.sort(sortArr);
-// 	console.log(newArr);
+//Сортировка массива
+var arr = [
+	{
+		name: 'Denis',
+		age: '28'
+	},
+	{
+		name: 'Kolj',
+		age: '30'
+	},
+	{
+		name: 'Serg',
+		age: '25'
+	},
+	{
+		name: 'Max',
+		age: '17'
+	}
+]
+
+function sortArr(prev, next) {
+	console.log(`1: ${prev}, 2: ${next}`);
+	 return prev['age'] - next['age'];
+
+	 //if(prev['name'] < next['name']) return -1;   // сортировка по имени
+	 //if(prev['name'] > next['name']) return 1;   //сортировка по имени
+
+}
+var newArr = arr.sort(sortArr);
+	console.log(newArr);
 
 
 
